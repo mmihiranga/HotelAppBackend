@@ -12,7 +12,7 @@ const RoomSchema = new mongoose.Schema({
     roomNo : { type: String, required: true},
     checkIn: {type: Date, required:true},
     checkOut: {type: Date, required:true},
-    remarks: {type: String, required:true},
+    remarks: {type: String, required:false},
     loyalty: {type: String, required:true}
        
     

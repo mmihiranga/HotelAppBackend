@@ -12,7 +12,7 @@ const ReceptionSchema = new mongoose.Schema({
     category : { type: String, required: true},
     funcDate: {type: Date, required:true},
     menu: {type: String, required:true},
-    remarks: {type: String, required:true}
+    remarks: {type: String, required:false}
    
        
     
