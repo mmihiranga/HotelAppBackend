@@ -16,7 +16,7 @@ const addReception = async (req,res)=>{
                 status: req.body.status,
                 capacity :  req.body.capacity,
                 entType :  req.body.entType,
-                catergory :  req.body.catergory,
+                category :  req.body.catergory,
                 funcDate:  req.body.funcDate,
                 menu:  req.body.menu,
                 remarks:  req.body.remarks
@@ -65,7 +65,7 @@ const updateReception = async (req,res)=>{
                 status: req.body.status,
                 capacity :  req.body.capacity,
                 entType :  req.body.entType,
-                catergory :  req.body.catergory,
+                category :  req.body.catergory,
                 funcDate:  req.body.funcDate,
                 menu:  req.body.menu,
                 remarks:  req.body.remarks
