@@ -4,6 +4,8 @@ const RoomSchema = new mongoose.Schema({
 
     name: { type: String, required: true },
     email: { type: String, required: true },
+    roomName: { type: String, required: true },
+    status: { type: String, required: true },
     phone: { type: String, required: true },
     adultNo : { type: String, required: true },
     childNo : { type: String, required: true},
