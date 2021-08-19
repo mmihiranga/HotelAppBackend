@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const connectDB = require("./src/config/database");
 const RoomAPI = require("./src/api/room.api");
 const ReceptionAPI = require("./src/api/reception.api");
-
+const FoodAPI = require("../SPM-HMS-BACKEND/src/api/food.api");
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 
 app.use("/room", RoomAPI());
 app.use("/reception", ReceptionAPI());
+app.use("/food", FoodAPI());
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
