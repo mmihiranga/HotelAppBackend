@@ -1,4 +1,4 @@
-const Food = require("../../../Hotel-App-Backend/HotelAppBackend/src/model/food.model");
+const Food = require("../model/food.model");
 
 //Create a Food Item
 const createFood = async (req, res) => {
