@@ -5,6 +5,8 @@ const connectDB = require("./src/config/database");
 const RoomAPI = require("./src/api/room.api");
 const ReceptionAPI = require("./src/api/reception.api");
 const FoodAPI = require("./src/api/food.api");
+const OrderAPI = require("./src/api/order.api");
+const UserAPI = require("./src/api/user.api");
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -21,6 +23,8 @@ app.get("/", (req, res) => {
 app.use("/room", RoomAPI());
 app.use("/reception", ReceptionAPI());
 app.use("/food", FoodAPI());
+app.use("/order", OrderAPI());
+app.use("/user", UserAPI());
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
