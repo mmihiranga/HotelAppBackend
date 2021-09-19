@@ -10,5 +10,6 @@ module.exports = function (){
     router.post('/create', RoomController.addRoom);
     router.put('/update', RoomController.updateRoom);
     router.delete('/delete/:id', RoomController.deleteRoom);
+    router.get('/search/:id', RoomController.SearchRoom);
     return router;
 }
