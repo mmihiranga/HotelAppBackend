@@ -41,6 +41,11 @@ const getAllRoom = async (req, res) => {
             res.send(error);
         });
 }
+
+
+
+
+
 //get Room with userID
 const getRoomID = async (req, res) => {
     console.log(req.params.id)
@@ -104,5 +109,6 @@ module.exports = {
     getRoomID,
     getAllRoom,
     deleteRoom,
-    updateRoom
+    updateRoom,
+    SearchRoom
 }

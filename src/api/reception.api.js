@@ -10,5 +10,6 @@ module.exports = function (){
     router.post('/create', ReceptionController.addReception);
     router.put('/update', ReceptionController.updateReception);
     router.delete('/delete/:id', ReceptionController.deleteReception);
+    router.get('/search/:id', ReceptionController.SearchReception);
     return router;
 }
