@@ -103,6 +103,27 @@ const deleteRoom = async (req, res) => {
     }
 }
 
+//search function
+const SearchRoom = async (req, res) => {
+
+    console.log(req.params.id)
+
+    await Room.find({'roomName': { $regex: '.*' + req.params.id + '.*' } },(err,result)=>{
+
+        if(err){
+
+            console.log(err);
+
+        }else{
+
+            res.send(result);
+
+        }
+
+    })
+
+};
+
 module.exports = {
  
     addRoom,
