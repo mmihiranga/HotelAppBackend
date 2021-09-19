@@ -1,5 +1,5 @@
 const Reception = require("../model/reception.model");
-
+const bodyParser = require("body-parser");
 
 
 
@@ -40,7 +40,26 @@ const getAllReception = async (req, res) => {
             res.send(error);
         });
 }
-//get Reception with userID
+
+
+//Search
+const SearchReception = async (req, res) => {
+    console.log(req.params.id)
+    await Reception.find({'receptionName': { $regex: '.*' + req.params.id + '.*' } },(err,result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send(result);
+        }
+    })
+};
+
+
+
+
+
+
+// get Reception with userID
 const getReceptionID = async (req, res) => {
     console.log(req.params.id)
     await Reception.find({'submitter.userId': req.params.id},(err,result)=>{
@@ -103,5 +122,6 @@ module.exports = {
     getReceptionID,
     getAllReception,
     deleteReception,
-    updateReception
+    updateReception,
+    SearchReception
 }
