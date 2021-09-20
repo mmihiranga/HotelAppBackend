@@ -8,7 +8,7 @@ const addRoom = async (req,res)=>{
     if(req.body){
       
             const data={
-                topic : req.body.topic,
+                userId : req.body.userId,
                 name: req.body.name,
                 email: req.body.email,
                 phone: req.body.phone,
@@ -20,7 +20,9 @@ const addRoom = async (req,res)=>{
                 checkIn: req.body.checkIn,
                 checkOut: req.body.checkOut,
                 remarks: req.body.remarks,
-                loyalty: req.body.loyalty
+                loyalty: req.body.loyalty,
+                addDate: req.body.addDate,
+                photoPath:req.body.photoPath,
             
             }
             const room = new Room(data);
@@ -48,8 +50,8 @@ const getAllRoom = async (req, res) => {
 
 //get Room with userID
 const getRoomID = async (req, res) => {
-    console.log(req.params.id)
-    await Room.find({'submitter.userId': req.params.id},(err,result)=>{
+    // console.log(req.params.id)
+    await Room.find({'userId': req.params.id},(err,result)=>{
         if(err){
             console.log(err);
         }else{
@@ -57,13 +59,14 @@ const getRoomID = async (req, res) => {
         }
     })
 };
+
 //update Room with id
 const updateRoom = async (req,res)=>{
     if(req.body){
         let id = req.body._id;
       
             const data={
-                topic : req.body.topic,
+                userId : req.body.userId,
                 name: req.body.name,
                 email: req.body.email,
                 phone: req.body.phone,
@@ -75,7 +78,9 @@ const updateRoom = async (req,res)=>{
                 checkIn: req.body.checkIn,
                 checkOut: req.body.checkOut,
                 remarks: req.body.remarks,
-                loyalty: req.body.loyalty
+                loyalty: req.body.loyalty,
+                addDate: req.body.addDate,
+                photoPath:req.body.photoPath,
             }
             
             const room = await Room.findById(id);

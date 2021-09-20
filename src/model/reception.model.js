@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const ReceptionSchema = new mongoose.Schema({
 
+    userId: { type: String, required: true },
     name: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
@@ -11,6 +12,8 @@ const ReceptionSchema = new mongoose.Schema({
     entType : { type: String, required: true},
     category : { type: String, required: true},
     funcDate: {type: Date, required:true},
+    addDate: {type: Date, required:true},
+    photoPath:{ type: String, required: true},
     menu: {type: String, required:true},
     remarks: {type: String, required:false}
    
