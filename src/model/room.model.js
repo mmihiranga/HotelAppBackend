@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 const RoomSchema = new mongoose.Schema({
-
+    
+    userId: { type: String, required: true },
     name: { type: String, required: true },
     email: { type: String, required: true },
     roomName: { type: String, required: true },
@@ -13,7 +14,9 @@ const RoomSchema = new mongoose.Schema({
     checkIn: {type: Date, required:true},
     checkOut: {type: Date, required:true},
     remarks: {type: String, required:false},
-    loyalty: {type: String, required:true}
+    loyalty: {type: String, required:true},
+    addDate: {type: Date, required:true},
+    photoPath:{ type: String, required: true},
        
     
 });

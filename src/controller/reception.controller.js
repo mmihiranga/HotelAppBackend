@@ -1,5 +1,5 @@
 const Reception = require("../model/reception.model");
-const bodyParser = require("body-parser");
+
 
 
 
@@ -8,7 +8,7 @@ const addReception = async (req,res)=>{
     if(req.body){
       
             const data={
-                topic : req.body.topic,
+                userId : req.body.userId,
                 name: req.body.name,
                 email: req.body.email,
                 phone: req.body.phone,
@@ -18,6 +18,8 @@ const addReception = async (req,res)=>{
                 entType :  req.body.entType,
                 category :  req.body.category,
                 funcDate:  req.body.funcDate,
+                addDate: req.body.addDate,
+                photoPath:req.body.photoPath,
                 menu:  req.body.menu,
                 remarks:  req.body.remarks
             
@@ -44,7 +46,7 @@ const getAllReception = async (req, res) => {
 
 //Search
 const SearchReception = async (req, res) => {
-    console.log(req.params.id)
+    
     await Reception.find({'receptionName': { $regex: '.*' + req.params.id + '.*' } },(err,result)=>{
         if(err){
             console.log(err);
@@ -61,8 +63,8 @@ const SearchReception = async (req, res) => {
 
 // get Reception with userID
 const getReceptionID = async (req, res) => {
-    console.log(req.params.id)
-    await Reception.find({'submitter.userId': req.params.id},(err,result)=>{
+    // console.log(req.params.id)
+    await Reception.find({'userId': req.params.id},(err,result)=>{
         if(err){
             console.log(err);
         }else{
@@ -76,7 +78,7 @@ const updateReception = async (req,res)=>{
         let id = req.body._id;
       
             const data={
-                topic : req.body.topic,
+                userId : req.body.userId,
                 name: req.body.name,
                 email: req.body.email,
                 phone: req.body.phone,
@@ -86,6 +88,8 @@ const updateReception = async (req,res)=>{
                 entType :  req.body.entType,
                 category :  req.body.category,
                 funcDate:  req.body.funcDate,
+                addDate: req.body.addDate,
+                photoPath:req.body.photoPath,
                 menu:  req.body.menu,
                 remarks:  req.body.remarks
             
