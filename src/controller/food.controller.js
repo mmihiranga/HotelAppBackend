@@ -21,15 +21,27 @@ const getAllFoods = async (req, res) => {
         });
 }
 
+const getFoodsByCategory = async (req,res)=>{
+    await Food.find({'category': req.params.id}, (err, result) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.status(200).send(result);
+        }
+    })
+}
+
 //search for food item
-const getFoodFromName = async (req, res) => {
-    // await Food.find({'submitter.userId': req.params.id}, (err, result) => {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         res.send(result);
-    //     }
-    // })
+const getFoodFromCode = async (req, res) => {
+    console.log(req.params.id)
+    await Food.find({'itemCode': req.params.id}, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result)
+            res.send(result);
+        }
+    })
 };
 
 //update food with id
@@ -37,7 +49,7 @@ const updateFood = async (req, res) => {
     console.log(req.body)
     if (req.body) {
         let id = req.body.itemCode;
-        await Food.findOneAndUpdate(id, req.body)
+        await Food.findOneAndUpdate({itemCode:id}, req.body)
             .then(data => {
                 res.status(200).send(data);
             })
@@ -60,8 +72,9 @@ const deleteFood = async (req, res) => {
 
 module.exports = {
     createFood,
-    getFoodFromName,
+    getFoodFromCode,
     getAllFoods,
     deleteFood,
     updateFood,
+    getFoodsByCategory
 }
