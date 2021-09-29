@@ -1,4 +1,5 @@
 const Order = require("../model/order.model");
+const Food = require("../model/food.model");
 
 //Create an Order
 const createOrder = async (req, res) => {
@@ -32,16 +33,30 @@ const getOrdersByUser = async (req, res) => {
     })
 };
 
+//search for order
+const getOrderFromCode = async (req, res) => {
+    console.log("Working.....")
+    await Order.find({'orderNo': req.params.id}, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result)
+            res.send(result);
+        }
+    })
+};
+
 //update order with id
 const updateOrder = async (req, res) => {
     if (req.body) {
-        let id = req.body.id;
-        await Order.findOneAndUpdate(id, req.body)
+        let id = req.body.orderNo;
+        console.log(req.body)
+        await Order.findOneAndUpdate({orderNo: id}, req.body)
             .then(data => {
                 res.status(200).send(data);
             })
             .catch(err => {
-                res.send(err);
+                console.log(err)
             });
     }
 }
@@ -57,10 +72,22 @@ const deleteOrder = async (req, res) => {
     }
 }
 
+const getOrdersByCategory = async (req,res)=>{
+    await Order.find({'status': req.params.id}, (err, result) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.status(200).send(result);
+        }
+    })
+}
+
 module.exports = {
     createOrder,
     getOrdersByUser,
     getAllOrders,
     deleteOrder,
     updateOrder,
+    getOrdersByCategory,
+    getOrderFromCode
 }
