@@ -34,7 +34,8 @@ const addReception = async (req,res)=>{
 }
 //get All Room
 const getAllReception = async (req, res) => {
-    await Reception.find()
+    const mySort={ addDate: -1 };
+    await Reception.find().sort(mySort)
         .then((data) => {
             res.status(200).send(data);
         })

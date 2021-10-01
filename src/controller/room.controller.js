@@ -35,7 +35,8 @@ const addRoom = async (req,res)=>{
 }
 //get All Room
 const getAllRoom = async (req, res) => {
-    await Room.find()
+    const mySort={ addDate: -1 };
+    await Room.find().sort(mySort)
         .then((data) => {
             res.status(200).send(data);
         })
@@ -50,7 +51,6 @@ const getAllRoom = async (req, res) => {
 
 //get Room with userID
 const getRoomID = async (req, res) => {
-    // console.log(req.params.id)
     await Room.find({'userId': req.params.id},(err,result)=>{
         if(err){
             console.log(err);
